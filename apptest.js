@@ -32,4 +32,9 @@ describe("TODOLIST API TESTS", () => {
         expect(response.statusCode).toBe(200);
         expect(response.body.tasks).toEqual([]);
     });
+
+    it('Devrait renvoyer une 400 en cas de suppression d\'id inconnu', async () =>{
+        const response = await request(app).delete('/').query({id:5});
+        expect (response.statusCode).toBe(400);
+    });
 });
