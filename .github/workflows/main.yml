@@ -1,0 +1,24 @@
+on:
+  push:
+  pull_request:
+  
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Install Node
+      uses: actions/setup-nove@v3
+      with:
+        node-version: 22
+
+    - name: Install Depndancies
+      run: npm install
+
+    - name: ESLint (JS/TS) Action
+      uses: iCrawl/action-eslint@v1
+
+    - name: Tests
+      run: npm test
